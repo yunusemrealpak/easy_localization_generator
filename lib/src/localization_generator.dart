@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/element2.dart';
 import 'package:build/build.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -22,11 +22,11 @@ class LocalizationGenerator extends GeneratorForAnnotation<SheetLocalization> {
 
   @override
   FutureOr<String> generateForAnnotatedElement(
-          Element element, ConstantReader annotation, BuildStep buildStep) =>
+          Element2 element, ConstantReader annotation, BuildStep buildStep) =>
       _generateSource(element, annotation);
 
   Future<String> _generateSource(
-      Element element, ConstantReader annotation) async {
+      Element2 element, ConstantReader annotation) async {
     final lineSeparator = annotation.read('lineSeparator').stringValue;
     final docId = annotation.read('docId');
     final outputDir = annotation.read('outDir').stringValue;
